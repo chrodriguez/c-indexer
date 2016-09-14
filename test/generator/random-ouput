@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DIR=`dirname $0`
+rm -fr $DIR/output
+mkdir -p $DIR/output/
+GENERATE=${GENERATE:-$DIR/bin/generate}
+for i in 10 100 1000 10000 50000 100000 500000; do
+  echo -n "Generating $i records..."
+  $GENERATE -z $i -n $DIR/data/names.txt -s $DIR/data/surnames.txt -o $DIR/../fixtures/$i.csv
+  echo " Done!"
+done
