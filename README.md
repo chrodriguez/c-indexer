@@ -6,24 +6,26 @@ El presente repositorio implementa un generador de índices para archivos CSV.
 El trabajo a realizar debe implementar un programa llamado sort que permita
 listar los archivos CSV originales en orden ascendente o descendente utilizando estos índices.
 
-## El tabajo a implementar
+## El trabajo a implementar
 
 El trabajo a implementar consiste en utilizar los índices generados por el
-indexador provisto en este mismo repositorio para listar archivos CSV ordenados
-en forma ascendente o descendente según los archivos de índices generados. En
-las secciones siguientes de éste documento se especifica el formato de los
+indexador (provisto en este mismo repositorio) para listar archivos CSV ordenados
+en forma ascendente o descendente, basándose en los archivos de índices generados.
+En las secciones siguientes de este documento se especifica el formato de esos
 índices.
+
 El binario a desarrollar debe llamarse `sort` y su código principal (programa
-main) se encuentra implementado con las opciones que recibe el mismo. Ud debe
+`main`) se encuentra implementado con las opciones que recibe el mismo. Usted debe
 implementar las funciones de ordenamiento.
-La idea es ordenar el índice (sin utilizar el CSV) en memoria y luego recorrer
-este índice ordenado según el criterio especificado e imprimiendo en la salida
-estándar cada línea del CSV original
+
+La idea es ordenar el índice (sin utilizar el CSV) en memoria según el criterio
+especificado y luego recorrer este índice ya ordenado e imprimir en la salida
+estándar las líneas del CSV original correspondientes a cada entrada del índice.
 
 ### Ejemplo de uso
 
-La idea del uso de `sort` depende de un archivo CSV y un archivo de índice
-creado previamente.
+El uso de `sort` requiere un archivo CSV fuente y un archivo índice creado
+previamente.
 
 Asumamos el CSV contiene los siguientes datos:
 
@@ -35,16 +37,19 @@ Asumamos el CSV contiene los siguientes datos:
 24021670;23/09/1991;Parra;Xavier
 ```
 
-Generando el índice por DNI:
+> En este ejemplo, el primer campo es el DNI de la persona, el segundo su fecha de
+nacimiento y los restantes su apellido y nombre, respectivamente.
+
+Se puede generar el índice por DNI utilizando el siguiente comando:
 
 ```bash
-./index -i input.csv -f 1 -t number -o input-dni.idx
+./bin/indexer -i input.csv -f 1 -t number -o input-dni.idx
 ```
 
 El uso del sort de la siguiente forma:
 
 ```bash
-./sort -d input.csv -i input-dni.idx
+./bin/sort -d input.csv -i input-dni.idx
 ```
 
 debería dar como resultado la siguiente salida:
@@ -60,7 +65,7 @@ debería dar como resultado la siguiente salida:
 El uso del sort de la siguiente forma:
 
 ```bash
-./sort -d input.csv -i input-dni.idx -o desc
+./bin/sort -d input.csv -i input-dni.idx -o desc
 ```
 
 debería dar como resultado:
@@ -73,7 +78,7 @@ debería dar como resultado:
 24021670;23/09/1991;Parra;Xavier
 ```
 
-En general el uso de `sort` sería:
+En general, el uso de `sort` sería:
 
 ```bash
 ./bin/sort -d data.csv -i index.idx [-o ASC|DESC]
@@ -87,10 +92,10 @@ Donde:
 
 ### Descargar fuentes:
 
-Los fuentes pueden descargarse con el siguiente comando usando GIT 
+Los fuentes pueden descargarse con el siguiente comando usando GIT
 
 ```bash
-git clone http://github.com/chrodriguez/c-indexer indexer
+git clone https://github.com/chrodriguez/c-indexer indexer
 ```
 
 o puede descargarse directamente en formato **zip** haciendo [click
@@ -135,7 +140,7 @@ El indexador se utiliza de la siguiente forma:
 
 ```bash
 
-./index -i input.csv -f field_number -t field_type -o index-output.idx
+./bin/indexer -i input.csv -f field_number -t field_type -o index-output.idx
 
 
 Donde:
@@ -168,10 +173,10 @@ Asumiendo un CSV llamado `input.csv` con el siguiente formato:
 Podremos crear indices para cada uno de los campos del CSV:
 
 ```bash
-  ./index -i input.csv -f 1 -t number -o input-dni.idx
-  ./index -i input.csv -f 2 -t date -o input-nacimiento.idx
-  ./index -i input.csv -f 3 -t string -o input-apellido.idx
-  ./index -i input.csv -f 4 -t string -o input-nombre.idx
+  ./bin/indexer -i input.csv -f 1 -t number -o input-dni.idx
+  ./bin/indexer -i input.csv -f 2 -t date -o input-nacimiento.idx
+  ./bin/indexer -i input.csv -f 3 -t string -o input-apellido.idx
+  ./bin/indexer -i input.csv -f 4 -t string -o input-nombre.idx
 ```
 
 
@@ -221,6 +226,7 @@ El índice quedaría:
 
 Como puede verse en el volcado en hexadecimal (16 bytes por línea) del archivo,
 el contenido sería como sigue:
+
 * Los primeros 7 bytes corresponden al MAGIC_NUMBER **IDX_CSV** sin `0` *- bytes
   del 0 al 6-*
 * A continuación el campo indexado en big endian usando 16 bits. En el volcado
