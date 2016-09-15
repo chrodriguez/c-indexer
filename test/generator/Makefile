@@ -1,6 +1,6 @@
 CFLAGS=-g -Wall 
 
-.phony: all clean generate-output
+.PHONY: all clean generate-output
 
 all: bin bin/generate generate-output
 

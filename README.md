@@ -69,12 +69,34 @@ aquí](https://github.com/chrodriguez/c-indexer/archive/master.zip)
 
 Para compilar los fuentes ingresar al directorio del proyecto y correr:
 
-```
+```bash
 make
 ```
 
 El binario resultante de la compilación quedará en el path `bin/indexer`
 
+#### Generando archivos de prueba
+
+Para generar un conjunto de CSVs de prueba, se provee en el directorio `test/`
+un generador de datos aleatorios. Para generar archivos de 10, 100, 1000, 10000,
+50000 y 100000 líneas correr el siguiente comando:
+
+```bash
+make test
+```
+
+Los archivos resultante quedarán en el directorio `test/fixtures`
+
+#### Generando los índices para cada prueba
+
+Una vez creados los datos de prueba, puede crear un índice para cada campo con
+el siguiente comando:
+
+```bash
+make test-indexes
+```
+
+Los archivos de indice resultante quedarán en el directorio `test/output`
 
 ## El indexador
 
