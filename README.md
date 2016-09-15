@@ -28,6 +28,11 @@ creado previamente.
 Asumamos el CSV contiene los siguientes datos:
 
 ```csv
+30548838;06/07/1992;Aguilera;Fernando
+24807867;04/04/1993;Vergara;Ignacio
+31343758;15/10/1995;Sanchez;Veronica
+32602814;14/02/1992;Barrios;Angela
+24021670;23/09/1991;Parra;Xavier
 ```
 
 Generando el índice por DNI:
