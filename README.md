@@ -57,6 +57,32 @@ debería dar como resultado la siguiente salida:
 32602814;14/02/1992;Barrios;Angela
 ```
 
+El uso del sort de la siguiente forma:
+
+```bash
+./sort -d input.csv -i input-dni.idx -o desc
+```
+
+debería dar como resultado:
+
+```csv
+32602814;14/02/1992;Barrios;Angela
+31343758;15/10/1995;Sanchez;Veronica
+30548838;06/07/1992;Aguilera;Fernando
+24807867;04/04/1993;Vergara;Ignacio
+24021670;23/09/1991;Parra;Xavier
+```
+
+En general el uso de `sort` sería:
+
+```bash
+./bin/sort -d data.csv -i index.idx [-o ASC|DESC]
+
+Donde:
+  -o ASC|DESC Se acepta ASC o DESC en minúsculas o mayúsculas. Si no se especifica
+              se asume ASC
+```
+
 ## Descarga y compilación
 
 ### Descargar fuentes:
