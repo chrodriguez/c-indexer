@@ -7,7 +7,7 @@ all: bin bin/generate generate-output
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-bin/generate: generate-data.c lib/person.c lib/log.c
+bin/generate: generate-data.c lib/person.c lib/log.c lib/error.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 bin:
