@@ -198,7 +198,7 @@ El archivo de indice se compone de la siguiente forma:
 1. **MAGIC_NUMBER:** son los siguientes bytes: `IDX_CSV`
 2. **FIELD_NUMBER:** un número de 16 bits (uint16_t) expresado en **big endian** que indica el numero del campo indexado (El primer campo es el 1)
 3. **FIELD_FORMAT:** un numero de 16 bits (uint16_t) expresado en **big endian** que indica el formato del campo indexado (0 number, 1 date, 2 string)
-4.**LIST_OF_FILE_POSITIONS:** una lista de valores que describen cada entrada del índice, a decir:
+4. **LIST_OF_FILE_POSITIONS:** una lista de valores que describen cada entrada del índice, a decir:
   1. Un número de 64 bits (uint64_t) expresados en **big endian** que indica la posición donde inicia la línea del archivo CSV indexado
   2. Un numero de 16 bits (uint16_t) expresado en **big endian** que indica la longitud del campo indexado
   3. El valor del índice, esto es el string del campo original en el CSV
