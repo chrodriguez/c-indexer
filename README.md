@@ -1,4 +1,4 @@
-# Trabajo final de C 2016
+# Trabajo final de Seminario de Lenguajes C: CSV Indexer
 
 ## Objetivo
 
